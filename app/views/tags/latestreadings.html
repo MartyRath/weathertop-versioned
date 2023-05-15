@@ -1,0 +1,49 @@
+#{list items:_station.latestReadings(), as:'readings'}
+        <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+            <div class="card-content has-text-white">
+                <div class = "title is-size-5 has-text-white">
+                    Weather
+                </div>
+                <br>
+                ${readings.weatherString()} <br> <br> <br>
+            </div>
+        </div>
+    </div>
+    <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+            <div class="card-content has-text-white">
+                <div class = "title is-size-5 has-text-white">
+                    Temp
+                </div>
+                ${readings.temperature} C <br>
+                ${readings.getTemperatureInF()} F <br> <br> <br>
+            </div>
+        </div>
+    </div>
+    <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+            <div class="card-content has-text-white">
+                <div class = "title is-size-5 has-text-white">
+                    Wind
+                </div>
+                ${readings.getBeaufort()} bft <br>
+                ${readings.getCompassDirection()} <br>
+                Feels like<br>
+                ${readings.getWindChill()}
+
+            </div>
+        </div>
+    </div>
+    <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+            <div class="card-content has-text-white">
+                <div class = "title is-size-5 has-text-white">
+                    Pressure
+                </div>
+                <br>
+                ${readings.pressure} hpa <br> <br> <br>
+            </div>
+        </div>
+    </div>
+#{/list}

@@ -1,0 +1,39 @@
+<table class="table is-bordered">
+    <thead>
+    <tr class = "content has-background-light">
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Wind Direction</th>
+        <th>Pressure</th>
+        <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list items:_station.readings, as:'reading'}  <!--list items see List<asda> -->
+    <tr>
+    <td>
+        ${reading.code}
+    </td>
+    <td>
+        ${reading.temperature}
+    </td>
+    <td>
+        ${reading.windSpeed}
+    </td>
+    <td>
+        ${reading.windDirection}
+    </td>
+    <td>
+        ${reading.pressure}
+    </td>
+    <td>
+        <a href="/stations/${_station.id}/deletereading/${reading.id}" class="icon has-text-danger">
+            <i class="fas fa-trash"></i>
+        </a>
+    </td>
+    </tr>
+#{/list}
+</tbody>
+</table>
+

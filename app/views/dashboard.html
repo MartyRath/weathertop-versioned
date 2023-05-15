@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+#{set subtitle:'WeatherTop Stations' /}
+
+#{menu id:"dashboard"/}
+
+<div class="content box">
+  <header class="title">
+    ${member.firstname} ${member.lastname}'s Weather Stations
+  </header>
+#{list items:stations, as: 'station'}  <!--the list(from dashboard controller) called stations-->
+  <div class="content box">
+    <h1 class="title">
+    ${station.name}
+    </h1>
+    <a href="/stations/${station.id}" class="icon has-text-primary">
+      <i class="fas fa-folder fa-lg"></i>
+    </a>
+    <a href="/dashboard/deletestation/${station.id}" class="icon has-text-danger">
+      <i class="fas fa-trash"></i>
+    </a>
+  </div>
+  #{/list}
+  #{addstation /}
+</div>

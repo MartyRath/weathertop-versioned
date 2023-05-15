@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Station' /}
+#{set subtitle: 'WeatherTop Station' /}
+
+#{menu id:"dashboard"/}
+
+<div class="content box">
+    <div class = "columns is-multiline has-text-centered">
+      <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+          <div class="card-content has-text-white">
+              <div class = "title is-size-4 has-text-white">
+                  ${station.name} <br> <br> <br> <br> <br>
+              </div>
+          </div>
+        </div>
+      </div>
+      #{latestreadings station:station/}
+    </div>
+    #{listreadings station:station/}
+    #{addreading station:station/}
+  </div>
+
+</div>
