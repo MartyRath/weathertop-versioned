@@ -18,11 +18,11 @@ public class Dashboard extends Controller
     render ("dashboard.html", member, stations);
   }
 
-  public static void addStation (String name)
+  public static void addStation (String name, double latitude, double longitude)
   {
     Logger.info ("Adding a new station called " + name);
     Member member = Accounts.getLoggedInMember();
-    Station station = new Station (name);
+    Station station = new Station (name, latitude, longitude);
     member.stations.add(station);
     member.save();
     redirect ("/dashboard");
