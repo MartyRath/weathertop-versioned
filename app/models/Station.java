@@ -7,6 +7,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import org.yaml.snakeyaml.*;
+import org.yaml.snakeyaml.constructor.Constructor;
+import java.io.*;
+
 import play.db.jpa.Model;
 
 
@@ -35,5 +39,21 @@ public class Station extends Model
     else return null;
   }
 
+  public void loadFromYaml() throws Exception
+  {
+    //Yaml yaml = new Yaml(new Constructor(List.class));
+
+    InputStream is = new FileInputStream(new File("data.yml"));
+    //readings = (List<Reading>) yaml.load(is);
+    is.close();
+  }
+
+  public void saveToYaml() throws Exception {
+    Yaml yaml = new Yaml();
+
+    OutputStream os = new FileOutputStream(new File("data.yml"));
+    yaml.dump(readings, new OutputStreamWriter(os));
+    os.close();
+  }
 
 }

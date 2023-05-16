@@ -22,7 +22,7 @@ public class Dashboard extends Controller
   {
     Logger.info ("Adding a new station called " + name);
     Member member = Accounts.getLoggedInMember();
-    Station station = new Station (name, latitude, longitude);
+    Station station = new Station(name, latitude, longitude);
     member.stations.add(station);
     member.save();
     redirect ("/dashboard");
