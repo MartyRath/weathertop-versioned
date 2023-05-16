@@ -5,12 +5,20 @@
 #{menu id:"dashboard"/}
 
 <div class="content box">
-    <div class = "columns is-multiline has-text-centered">
+    <div class = "columns is-multiline has-text-left">
       <div class = "column is-one-fifth">
         <div class = "card has-background-dark">
           <div class="card-content has-text-white">
-              <div class = "title is-size-4 has-text-white">
-                  ${station.name} <br> <br> <br> <br> <br>
+
+              <div class = "title is-size-4 has-text-white mr-2">
+                  ${station.name}
+                  <span class="icon is-pulled-right">
+                    <i class="fa-sharp fa-solid fa-location-dot fa-2x"></i>
+                  </span><br> <br>
+                  <div class = "text is-size-6 as-text-white">
+                    ${station.latitude} <br>
+                    ${station.longitude} <br> <br>
+                  </div>
               </div>
           </div>
         </div>

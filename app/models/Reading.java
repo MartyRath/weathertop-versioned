@@ -59,4 +59,9 @@ public class Reading extends Model {
     double windChill = Conversion.convertToWindChill(temperature, windSpeed);
     return windChill;
   }
+
+  public String weatherCodeToIcons(){
+    String weatherCodeIcon = Conversion.weatherCodeToIcon(Conversion.weatherCodeToString(code));
+    return weatherCodeIcon;
+  }
 }

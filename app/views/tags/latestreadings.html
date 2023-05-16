@@ -2,8 +2,11 @@
         <div class = "column is-one-fifth">
         <div class = "card has-background-dark">
             <div class="card-content has-text-white">
-                <div class = "title is-size-5 has-text-white">
+                <div class = "title is-size-5 has-text-white mr-1">
                     Weather
+                    <span class = "icon is-pulled-right">
+                      <i class="${readings.weatherCodeToIcons()}"></i>
+                    </span>
                 </div>
                 <br>
                 ${readings.weatherString()} <br> <br> <br>

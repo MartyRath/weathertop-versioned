@@ -1,6 +1,53 @@
 package utilities;
 
+import java.util.HashMap;
+
 public class Conversion {
+
+  //////////////////////ICONS//////////////////////////////////////
+  //This method takes in weatherCodeString and returns code for icon
+  public static String weatherCodeToIcon(String weatherCode) {
+    HashMap <String, String> weatherCodeToIcon = new HashMap<String, String>();
+    weatherCodeToIcon.put("Clear", "fa-solid fa-sun");
+    weatherCodeToIcon.put("Partial Clouds", "fa-regular fa-clouds");
+    weatherCodeToIcon.put("Light Shower", "fa-light fa-cloud-showers");
+    weatherCodeToIcon.put("Heavy Showers", "fa-regular fa-cloud-showers-heavy");
+    weatherCodeToIcon.put("Rain", "fa-solid fa-raindrops");
+    weatherCodeToIcon.put("Snow","fa-solid fa-snowflake");
+    weatherCodeToIcon.put("Thunder", "fa-sharp fa-regular fa-cloud-bolt");
+
+    String weatherCodeIcon = weatherCodeToIcon.get(weatherCode);
+    return weatherCodeIcon;
+  }
+
+  public static String temperatureToIcon(int temperature) {
+    if (temperature <= 1) {
+      return "??";
+    } else if (temperature <= 5) {
+      return "??";
+    } else if (temperature <= 11) {
+      return "??";
+    } else if (temperature <= 19) {
+      return "??";
+    } else if (temperature <= 28) {
+      return "??";
+    } else if (temperature <= 38) {
+      return "??";
+    } else if (temperature <= 49) {
+      return "??";
+    } else if (temperature <= 61) {
+      return "??";
+    } else if (temperature <= 74) {
+      return "??";
+    } else if (temperature <= 88) {
+      return "??";
+    } else if (temperature <= 102) {
+      return "??";
+    } else if (temperature <= 117) {
+      return "??";
+    } else return null;
+  }
+  //////////////////////ICONS////////////////////////////////////
 
   public static String weatherCodeToString(int weatherCode) {
     switch (weatherCode) {
@@ -69,7 +116,7 @@ public class Conversion {
   // This method takes in a wind direction degrees integer and returns a compass direction String.
   // This is achieved by creating an array of type String with 16 compass directions,
   // each separated by 22.5 degrees (360/16)
-  // We reference the index by degrees modulo 360 to ensure we get a valid index returned, then divided by 22.5.
+  // We use degrees modulo 360 to ensure that when we divide by 22.5, we get a valid index.
   // We then return the String compass direction using this index.
   public static String convertDegreesToCompassDirection(int degrees) {
     String[] directions = {"North", "North North East", "North East", "East North East", "East", "East South East",
