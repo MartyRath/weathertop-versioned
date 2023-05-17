@@ -64,4 +64,9 @@ public class Reading extends Model {
     String weatherCodeIcon = Conversion.weatherCodeToIcon(Conversion.weatherCodeToString(code));
     return weatherCodeIcon;
   }
+
+  public String temperatureToIcon(){
+    String tempIcon = Conversion.temperatureToIcon(temperature);
+    return tempIcon;
+  }
 }

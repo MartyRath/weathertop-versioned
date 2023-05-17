@@ -8,45 +8,28 @@ public class Conversion {
   //This method takes in weatherCodeString and returns code for icon
   public static String weatherCodeToIcon(String weatherCode) {
     HashMap <String, String> weatherCodeToIcon = new HashMap<String, String>();
-    weatherCodeToIcon.put("Clear", "fa-solid fa-sun");
-    weatherCodeToIcon.put("Partial Clouds", "fa-regular fa-clouds");
-    weatherCodeToIcon.put("Light Shower", "fa-light fa-cloud-showers");
-    weatherCodeToIcon.put("Heavy Showers", "fa-regular fa-cloud-showers-heavy");
-    weatherCodeToIcon.put("Rain", "fa-solid fa-raindrops");
+    weatherCodeToIcon.put("Clear", "fa-sharp fa-solid fa-sun");
+    weatherCodeToIcon.put("Partial Clouds", "fa-brands fa-soundcloud");
+    weatherCodeToIcon.put("Cloudy", "fa-solid fa-cloud");
+    weatherCodeToIcon.put("Light Showers", "fa-brands fa-drupal");
+    weatherCodeToIcon.put("Heavy Showers", "fa-solid fa-cloud-showers-heavy");
+    weatherCodeToIcon.put("Rain", "fa-solid fa-cloud-rain");
     weatherCodeToIcon.put("Snow","fa-solid fa-snowflake");
-    weatherCodeToIcon.put("Thunder", "fa-sharp fa-regular fa-cloud-bolt");
+    weatherCodeToIcon.put("Thunder", "fa-solid fa-bolt");
 
     String weatherCodeIcon = weatherCodeToIcon.get(weatherCode);
     return weatherCodeIcon;
   }
 
-  public static String temperatureToIcon(int temperature) {
-    if (temperature <= 1) {
-      return "??";
-    } else if (temperature <= 5) {
-      return "??";
-    } else if (temperature <= 11) {
-      return "??";
-    } else if (temperature <= 19) {
-      return "??";
-    } else if (temperature <= 28) {
-      return "??";
-    } else if (temperature <= 38) {
-      return "??";
-    } else if (temperature <= 49) {
-      return "??";
-    } else if (temperature <= 61) {
-      return "??";
-    } else if (temperature <= 74) {
-      return "??";
-    } else if (temperature <= 88) {
-      return "??";
-    } else if (temperature <= 102) {
-      return "??";
-    } else if (temperature <= 117) {
-      return "??";
-    } else return null;
+  public static String temperatureToIcon(double temperature) {
+    if (temperature <= 5) {
+      return "fa-solid fa-temperature-low";
+    } else if (temperature >= 17) {
+      return "fa-solid fa-temperature-high";
+    }
+    else return "fa-solid fa-temperature-half";
   }
+  
   //////////////////////ICONS////////////////////////////////////
 
   public static String weatherCodeToString(int weatherCode) {

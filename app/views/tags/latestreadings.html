@@ -1,11 +1,13 @@
+#{extends 'main.html' /}
+
 #{list items:_station.latestReadings(), as:'readings'}
         <div class = "column is-one-fifth">
         <div class = "card has-background-dark">
             <div class="card-content has-text-white">
-                <div class = "title is-size-5 has-text-white mr-1">
+                <div class = "title is-size-5 has-text-white">
                     Weather
                     <span class = "icon is-pulled-right">
-                      <i class="${readings.weatherCodeToIcons()}"></i>
+                      <i class="${readings.weatherCodeToIcons()} fa-2x" style="color: #008000;"></i>
                     </span>
                 </div>
                 <br>
@@ -18,6 +20,9 @@
             <div class="card-content has-text-white">
                 <div class = "title is-size-5 has-text-white">
                     Temp
+                    <span class = "icon is-pulled-right">
+                      <i class="${readings.temperatureToIcon()} fa-2x" style="color: #008000;"></i>
+                    </span>
                 </div>
                 ${readings.temperature} C <br>
                 ${readings.getTemperatureInF()} F <br> <br> <br>
@@ -29,6 +34,9 @@
             <div class="card-content has-text-white">
                 <div class = "title is-size-5 has-text-white">
                     Wind
+                    <span class = "icon is-pulled-right">
+                      <i class="fa-solid fa-wind fa-2x"></i>
+                    </span>
                 </div>
                 ${readings.getBeaufort()} bft <br>
                 ${readings.getCompassDirection()} <br>
@@ -43,6 +51,9 @@
             <div class="card-content has-text-white">
                 <div class = "title is-size-5 has-text-white">
                     Pressure
+                    <span class="icon is-pulled-right">
+                    <i class="fa-brands fa-centos fa-3x" style="color: #ff8000;"></i>
+                </span>
                 </div>
                 <br>
                 ${readings.pressure} hpa <br> <br> <br>
