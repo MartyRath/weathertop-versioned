@@ -7,10 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import org.yaml.snakeyaml.*;
-import org.yaml.snakeyaml.constructor.Constructor;
-import java.io.*;
-
 import play.db.jpa.Model;
 
 
@@ -39,21 +35,25 @@ public class Station extends Model
     else return null;
   }
 
-  public void loadFromYaml() throws Exception
-  {
-    //Yaml yaml = new Yaml(new Constructor(List.class));
+  public static double minTemp(List<Reading> readings) {
+    double minTemp = Double.MAX_VALUE;
 
-    InputStream is = new FileInputStream(new File("data.yml"));
-    //readings = (List<Reading>) yaml.load(is);
-    is.close();
+    for (Reading reading: readings){
+      if(reading.temperature < minTemp){
+        minTemp = reading.temperature;
+      }
+    }
+    return minTemp;
   }
 
-  public void saveToYaml() throws Exception {
-    Yaml yaml = new Yaml();
+  public static double maxValue(List<Reading> readings, double value) {
+    double maxValue= Double.MIN_VALUE;
 
-    OutputStream os = new FileOutputStream(new File("data.yml"));
-    yaml.dump(readings, new OutputStreamWriter(os));
-    os.close();
+    for (Reading reading: readings){
+      if(value > maxValue){
+        maxValue = value;
+      }
+    }
+    return maxValue;
   }
-
 }

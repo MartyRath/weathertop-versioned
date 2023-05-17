@@ -1,6 +1,9 @@
 package utilities;
 
+import models.Reading;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class Conversion {
 
@@ -29,7 +32,6 @@ public class Conversion {
     }
     else return "fa-solid fa-temperature-half";
   }
-  
   //////////////////////ICONS////////////////////////////////////
 
   public static String weatherCodeToString(int weatherCode) {
