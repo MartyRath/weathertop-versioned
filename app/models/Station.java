@@ -48,27 +48,16 @@ public class Station extends Model
     else return null;
   }
 
-  public double getMinTemp(){
-    return Conversion.getMinValue(readings, "temperature");
+  public double getMinValue(String field){
+    return Conversion.getMinValue(readings, field);
   }
 
-  public double getMinWindSpeed(){
-    return Conversion.getMinValue(readings, "windSpeed");
+  public double getMaxValue(String field){
+    return Conversion.getMaxValue(readings, field);
   }
 
-  public double getMinPressure(){
-    return Conversion.getMinValue(readings, "pressure");
-  }
-  public double getMaxTemp(){
-    return Conversion.getMaxValue(readings, "temperature");
-  }
-
-  public double getMaxWindSpeed(){
-    return Conversion.getMaxValue(readings, "windSpeed");
-  }
-
-  public double getMaxPressure(){
-    return Conversion.getMaxValue(readings, "pressure");
+  public String getTrends(String field){
+    return Conversion.getTrends(readings, field);
   }
 
 }

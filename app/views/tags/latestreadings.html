@@ -26,8 +26,11 @@
                 </div>
                 ${readings.temperature} C <br>
                 ${readings.getTemperatureInF()} F <br>
-                Max: ${_station.getMaxTemp()}  <br>
-                Min: ${_station.getMinTemp()}
+                <span class = "icon is-pulled-right">
+                    <i class="${_station.getTrends("temperature")} fa-2x" style="color: #008000;"></i>
+                </span>
+                Max: ${_station.getMaxValue("temperature")}  <br>
+                Min: ${_station.getMinValue("temperature")} <br>
             </div>
         </div>
     </div>
@@ -41,11 +44,14 @@
                     </span>
                 </div>
                 ${readings.getBeaufort()} bft <br>
+                <span class = "icon is-pulled-right">
+                    <i class="${_station.getTrends("windSpeed")} fa-2x" style="color: #008000;"></i>
+                </span>
                 ${readings.getCompassDirection()} <br>
                 Feels like<br>
                 ${readings.getWindChill()} <br>
-                Max: ${_station.getMaxWindSpeed()}  <br>
-                Min: ${_station.getMinWindSpeed()}
+                Max: ${_station.getMaxValue("windSpeed")}  <br>
+                Min: ${_station.getMinValue("windSpeed")} <br>
             </div>
         </div>
     </div>
@@ -60,11 +66,14 @@
                 </div>
                 <br>
                 ${readings.pressure} hpa <br>
+                <span class = "icon is-pulled-right">
+                    <i class="${_station.getTrends("pressure")} fa-2x" style="color: #008000;"></i>
+                </span>
                 Max:<br>
-                ${_station.getMaxPressure()}
+                ${_station.getMaxValue("pressure")}
                 <br>
                 Min: <br>
-                ${_station.getMinPressure()}
+                ${_station.getMinValue("pressure")}
             </div>
         </div>
     </div>

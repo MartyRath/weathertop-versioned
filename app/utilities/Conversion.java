@@ -119,7 +119,6 @@ public class Conversion {
   }
 
   private static double getValueFromField(Reading reading, String field) {
-
       double value = 0;
       switch (field) {
         case "temperature":
@@ -162,20 +161,24 @@ public class Conversion {
   }
 
   ////////////TRENDS///////////////
-  public static String getTrends(List<Reading> readings) {
+  public static String getTrends(List<Reading> readings, String field) {
     if (readings.size() < 3) {
       return null;
     }
 
-    Reading last = readings.get(readings.size() - 1);
-    Reading secondLast = readings.get(readings.size() - 2);
-    Reading thirdLast = readings.get(readings.size() - 3);
+    Reading lastReading = readings.get(readings.size() - 1);
+    Reading secondLastReading = readings.get(readings.size() - 2);
+    Reading thirdLastReading = readings.get(readings.size() - 3);
 
-    if (last.temperature > secondLast.temperature && secondLast.temperature > thirdLast.temperature) {
-      return "Rising";
+    double last = getValueFromField(lastReading, field);
+    double secondLast = getValueFromField(secondLastReading, field);
+    double thirdLast = getValueFromField(thirdLastReading, field);
+
+    if (last > secondLast && secondLast > thirdLast) {
+      return "fa-solid fa-arrow-up";  //rising arrow
       }
-    else if (last.temperature < secondLast.temperature && secondLast.temperature < thirdLast.temperature) {
-            return "Falling";
+    else if (last < secondLast && secondLast < thirdLast) {
+            return "fa-solid fa-arrow-down"; //falling arrow
       }
     return null;
   }
