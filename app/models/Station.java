@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
+import utilities.Conversion;
+
 
 @Entity
 public class Station extends Model
@@ -35,25 +37,27 @@ public class Station extends Model
     else return null;
   }
 
-  public static double minTemp(List<Reading> readings) {
-    double minTemp = Double.MAX_VALUE;
-
-    for (Reading reading: readings){
-      if(reading.temperature < minTemp){
-        minTemp = reading.temperature;
-      }
-    }
-    return minTemp;
+  public double getMinTemp(){
+    return Conversion.getMinValue(readings, "temperature");
   }
 
-  public static double maxValue(List<Reading> readings, double value) {
-    double maxValue= Double.MIN_VALUE;
-
-    for (Reading reading: readings){
-      if(value > maxValue){
-        maxValue = value;
-      }
-    }
-    return maxValue;
+  public double getMinWindSpeed(){
+    return Conversion.getMinValue(readings, "windSpeed");
   }
+
+  public double getMinPressure(){
+    return Conversion.getMinValue(readings, "pressure");
+  }
+  public double getMaxTemp(){
+    return Conversion.getMaxValue(readings, "temperature");
+  }
+
+  public double getMaxWindSpeed(){
+    return Conversion.getMaxValue(readings, "windSpeed");
+  }
+
+  public double getMaxPressure(){
+    return Conversion.getMaxValue(readings, "pressure");
+  }
+
 }

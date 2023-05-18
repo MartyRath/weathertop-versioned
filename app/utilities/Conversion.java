@@ -118,4 +118,51 @@ public class Conversion {
     return windChillToOneDecimalPlace;
   }
 
+  public static double getMinValue(List<Reading> readings, String field) {
+    double minValue = Double.MAX_VALUE;
+
+    for (Reading reading: readings){
+      double value = 0;
+      switch (field) {
+        case "temperature":
+          value = reading.temperature;
+          break;
+        case "windSpeed":
+          value = reading.windSpeed;
+          break;
+        case "pressure":
+          value = reading.pressure;
+          break;
+      }
+
+      if(value < minValue){
+        minValue = value;
+      }
+    }
+    return minValue;
+  }
+
+  public static double getMaxValue(List<Reading> readings, String field) {
+    double maxValue = Double.MIN_VALUE;
+
+    for (Reading reading: readings){
+      double value = 0;
+      switch (field) {
+        case "temperature":
+          value = reading.temperature;
+          break;
+        case "windSpeed":
+          value = reading.windSpeed;
+          break;
+        case "pressure":
+          value = reading.pressure;
+          break;
+      }
+
+      if(value > maxValue){
+        maxValue = value;
+      }
+    }
+    return maxValue;
+  }
 }

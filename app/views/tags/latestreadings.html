@@ -26,8 +26,8 @@
                 </div>
                 ${readings.temperature} C <br>
                 ${readings.getTemperatureInF()} F <br>
-                Max: ${_station.maxValue(_station.readings, readings.temperature)} <br>
-                Min: ${_station.minTemp(_station.readings)}
+                Max: ${_station.getMaxTemp()}  <br>
+                Min: ${_station.getMinTemp()}
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
                 ${readings.getCompassDirection()} <br>
                 Feels like<br>
                 ${readings.getWindChill()} <br>
-                Max:12  <br>
-                Min: 12
+                Max: ${_station.getMaxWindSpeed()}  <br>
+                Min: ${_station.getMinWindSpeed()}
             </div>
         </div>
     </div>
@@ -61,9 +61,10 @@
                 <br>
                 ${readings.pressure} hpa <br>
                 Max:<br>
-                12 <br>
-                Min:<br>
-                12
+                ${_station.getMaxPressure()}
+                <br>
+                Min: <br>
+                ${_station.getMinPressure()}
             </div>
         </div>
     </div>
