@@ -8,11 +8,30 @@
   <header class="title">
     ${member.firstname} ${member.lastname}'s Weather Stations
   </header>
-#{list items:stations, as: 'station'}  <!--the list(from dashboard controller) called stations-->
+  #{list items:stations, as: 'station'}  <!--the list(from dashboard controller) called stations-->
   <div class="content box">
     <h1 class="title">
-    ${station.name}
+      ${station.name}
     </h1>
+    <div class = "columns has-text-left">
+      <div class = "column is-one-fifth">
+        <div class = "card has-background-dark">
+          <div class="card-content has-text-white">
+            <div class = "title is-size-4 has-text-white mr-2">
+              ${station.name}
+              <span class="icon is-pulled-right">
+                    <i class="fa-sharp fa-solid fa-location-dot fa-2x" style="color: #ff0000;"></i>
+                  </span><br> <br>
+              <div class = "text is-size-6 as-text-white">
+                ${station.latitude} <br>
+                ${station.longitude} <br> <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      #{latestreadings station:station/}
+    </div>
     <a href="/stations/${station.id}" class="icon has-text-primary">
       <i class="fas fa-folder fa-lg"></i>
     </a>
