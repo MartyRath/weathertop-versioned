@@ -1,6 +1,7 @@
 <table class="table is-bordered">
     <thead>
     <tr class = "content has-background-light">
+        <th>Date/Time</th>
         <th>Code</th>
         <th>Temp</th>
         <th>Wind Speed</th>
@@ -12,6 +13,9 @@
     <tbody>
     #{list items:_station.readings, as:'reading'}  <!--list items see List<asda> -->
     <tr>
+    <td>
+        ${reading.dateTime}
+    </td>
     <td>
         ${reading.code}
     </td>
