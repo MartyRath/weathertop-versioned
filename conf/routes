@@ -14,6 +14,7 @@ GET    /logout                                  Accounts.logout
 GET     /dashboard                              Dashboard.index
 GET     /dashboard/deletestation/{id}           Dashboard.deleteStation
 GET     /about                                  About.index
+GET     /profile                                Profile.index
 GET     /stations/{id}                          StationCtrl.index
 
 POST    /stations/{id}/addreading               StationCtrl.addReading
