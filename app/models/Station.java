@@ -37,6 +37,17 @@ public class Station extends Model
     else return null;
   }
 
+  public List<Reading> latestThreeReadings(){
+    if(readings.size() != 0) {
+      List<Reading> latestThreeReadings = new ArrayList<>();
+      latestThreeReadings.add(readings.get(readings.size() - 1));
+      latestThreeReadings.add(readings.get(readings.size() - 2));
+      latestThreeReadings.add(readings.get(readings.size() - 3));
+      return latestThreeReadings;
+    }
+    else return null;
+  }
+
   public double getMinTemp(){
     return Conversion.getMinValue(readings, "temperature");
   }

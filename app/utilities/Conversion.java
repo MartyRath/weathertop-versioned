@@ -118,10 +118,8 @@ public class Conversion {
     return windChillToOneDecimalPlace;
   }
 
-  public static double getMinValue(List<Reading> readings, String field) {
-    double minValue = Double.MAX_VALUE;
+  private static double getValueFromField(Reading reading, String field) {
 
-    for (Reading reading: readings){
       double value = 0;
       switch (field) {
         case "temperature":
@@ -134,8 +132,16 @@ public class Conversion {
           value = reading.pressure;
           break;
       }
+      return value;
+  }
 
-      if(value < minValue){
+  public static double getMinValue(List<Reading> readings, String field) {
+    double minValue = Double.MAX_VALUE;
+
+      for (Reading reading : readings) {
+        double value = getValueFromField(reading, field);
+
+        if(value < minValue){
         minValue = value;
       }
     }
@@ -146,23 +152,31 @@ public class Conversion {
     double maxValue = Double.MIN_VALUE;
 
     for (Reading reading: readings){
-      double value = 0;
-      switch (field) {
-        case "temperature":
-          value = reading.temperature;
-          break;
-        case "windSpeed":
-          value = reading.windSpeed;
-          break;
-        case "pressure":
-          value = reading.pressure;
-          break;
-      }
+      double value = getValueFromField(reading, field);
 
       if(value > maxValue){
         maxValue = value;
       }
     }
     return maxValue;
+  }
+
+  ////////////TRENDS///////////////
+  public static String getTrends(List<Reading> readings) {
+    if (readings.size() < 3) {
+      return null;
+    }
+
+    Reading last = readings.get(readings.size() - 1);
+    Reading secondLast = readings.get(readings.size() - 2);
+    Reading thirdLast = readings.get(readings.size() - 3);
+
+    if (last.temperature > secondLast.temperature && secondLast.temperature > thirdLast.temperature) {
+      return "Rising";
+      }
+    else if (last.temperature < secondLast.temperature && secondLast.temperature < thirdLast.temperature) {
+            return "Falling";
+      }
+    return null;
   }
 }
