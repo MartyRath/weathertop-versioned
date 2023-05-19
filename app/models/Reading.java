@@ -1,5 +1,7 @@
 package models;
+
 import javax.persistence.Entity;
+
 import play.db.jpa.Model;
 import utilities.Conversion;
 
@@ -31,10 +33,10 @@ public class Reading extends Model {
   }
 
   public double getTemperatureInF() {
-    return Conversion.convertTemperatureToF(temperature);
+    return Conversion.convertTemperatureCToF(temperature);
   }
 
-  public double getBeaufort(){
+  public double getBeaufort() {
     return Conversion.convertWindSpeedToBeaufort(windSpeed);
   }
 
@@ -47,32 +49,33 @@ public class Reading extends Model {
   }
 
   public double getWindSpeed() {
-      return windSpeed;
+    return windSpeed;
   }
 
   public int getWindDirection() {
     return windDirection;
   }
-  public double getPressure(){
+
+  public double getPressure() {
     return pressure;
   }
 
-  public String getCompassDirection(){
+  public String getCompassDirection() {
     String compassDirection = Conversion.convertDegreesToCompassDirection(windDirection);
     return compassDirection;
   }
 
-  public double getWindChill(){
+  public double getWindChill() {
     double windChill = Conversion.convertToWindChill(temperature, windSpeed);
     return windChill;
   }
 
-  public String weatherCodeToIcons(){
+  public String weatherCodeToIcons() {
     String weatherCodeIcon = Conversion.weatherCodeToIcon(Conversion.weatherCodeToString(code));
     return weatherCodeIcon;
   }
 
-  public String temperatureToIcon(){
+  public String temperatureToIcon() {
     String tempIcon = Conversion.temperatureToIcon(temperature);
     return tempIcon;
   }

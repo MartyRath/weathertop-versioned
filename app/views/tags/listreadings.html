@@ -1,6 +1,6 @@
 <table class="table is-bordered">
     <thead>
-    <tr class = "content has-background-light">
+    <tr class="content has-background-light">
         <th>Date/Time</th>
         <th>Code</th>
         <th>Temp</th>
@@ -13,31 +13,31 @@
     <tbody>
     #{list items:_station.readings, as:'reading'}  <!--list items see List<asda> -->
     <tr>
-    <td>
-        ${reading.dateTime}
-    </td>
-    <td>
-        ${reading.code}
-    </td>
-    <td>
-        ${reading.temperature}
-    </td>
-    <td>
-        ${reading.windSpeed}
-    </td>
-    <td>
-        ${reading.windDirection}
-    </td>
-    <td>
-        ${reading.pressure}
-    </td>
-    <td>
-        <a href="/stations/${_station.id}/deletereading/${reading.id}" class="icon has-text-danger">
-            <i class="fas fa-trash"></i>
-        </a>
-    </td>
+        <td>
+            ${reading.dateTime}
+        </td>
+        <td>
+            ${reading.code}
+        </td>
+        <td>
+            ${reading.temperature}
+        </td>
+        <td>
+            ${reading.windSpeed}
+        </td>
+        <td>
+            ${reading.windDirection}
+        </td>
+        <td>
+            ${reading.pressure}
+        </td>
+        <td>
+            <a href="/stations/${_station.id}/deletereading/${reading.id}" class="icon has-text-danger">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
     </tr>
-#{/list}
-</tbody>
+    #{/list}
+    </tbody>
 </table>
 
