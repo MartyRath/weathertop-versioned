@@ -7,8 +7,12 @@ import java.util.List;
 
 public class Conversion {
 
-  //////////////////////ICONS//////////////////////////////////////
-  //This method takes in weatherCodeString and returns code for icon
+
+  /**
+   * This method refers a weather code to the relevant fontawesome icon class.
+   * @param weatherCode A weather code based on weather conditions
+   * @return A fontawesome icon class reference
+   */
   public static String weatherCodeToIcon(String weatherCode) {
     HashMap<String, String> weatherCodeToIcon = new HashMap<String, String>();
     weatherCodeToIcon.put("Clear", "fa-sharp fa-solid fa-sun");
@@ -24,6 +28,11 @@ public class Conversion {
     return weatherCodeIcon;
   }
 
+  /**
+   * This method reads in a temperature and, based on its value, refers it to the relevant fontawesome icon class.
+   * @param temperature Temperature in Celsius
+   * @return A fontawesome icon class reference
+   */
   public static String temperatureToIcon(double temperature) {
     if (temperature <= 5) {
       return "fa-solid fa-temperature-low";
@@ -31,8 +40,12 @@ public class Conversion {
       return "fa-solid fa-temperature-high";
     } else return "fa-solid fa-temperature-half";
   }
-  //////////////////////ICONS////////////////////////////////////
 
+  /**
+   * Converts a weather code and to its relevant String representation.
+   * @param weatherCode The weather code representing the weather condition
+   * @return The weather condition String based on the weather code, or null if no matching case.
+   */
   public static String weatherCodeToString(int weatherCode) {
     switch (weatherCode) {
       case 100:
@@ -55,20 +68,23 @@ public class Conversion {
     return null;
   }
 
+  /**
+   * Converts Celsius to Fahrenheit.
+   * @param temperature Temperature in Celsius
+   * @return Temperature in Fahrenheit
+   */
   public static double convertTemperatureCToF(double temperature) {
     double farenheit = temperature * 9 / 5 + 32;
     return farenheit;
   }
 
+  /**
+   * Converts wind speed from kilometers per hour to the Beaufort scale
+   * @param windSpeed Wind Speed in kilometers per hour to be converted
+   * @return Beaufort value from input wind speed
+   */
   public static double convertWindSpeedToBeaufort(double windSpeed) {
-    //if (windSpeed < 0) {
-    //  throw new IllegalArgumentException("Wind speed cannot be negative");
-    //}
-    //if (Double.isNaN(windSpeed)) {
-    //  throw new IllegalArgumentException("Wind speed cannot be NaN");
-    //}
-
-    double beaufort = 0; //add exceptions instead of this later...
+    double beaufort = 0;
     if (windSpeed <= 1) {
       return 0;
     } else if (windSpeed <= 5) {
@@ -97,19 +113,27 @@ public class Conversion {
     return beaufort;
   }
 
-  // This method takes in a wind direction degrees integer and returns a compass direction String.
-  // This is achieved by creating an array of type String with 16 compass directions,
+
   // each separated by 22.5 degrees (360/16)
   // The index is derived by dividing the degrees by 22.5.
   // We use degrees modulo 360 to ensure that when we divide by 22.5, we get a valid index.
   // Math round is used for accuracy. Int is used to convert the result of math round (long) to int.
   // We then return the String compass direction using this index.
-  public static String convertDegreesToCompassDirection(double degrees) {
+
+  /**
+   * Converts degrees to compass directions.
+   * @param degrees Compass degrees representing direction
+   * @return String representation of compass direction from degrees
+   */
+  public static String convertDegreesToCompassDirection(int degrees) {
     String[] directions = {"North", "North North East", "North East", "East North East", "East", "East South East",
         "South East", "South South East", "South", "South South West", "South West",
         "West South West", "West", "West North West", "North West", "North North West"};
+
     int index = (int) Math.round(((degrees % 360) / 22.5));
-    return directions[index];
+    if (index <=15){
+    return directions[index];}
+    else return "North";
   }
 
   public static double convertToWindChill(double temperature, double windSpeed) {
