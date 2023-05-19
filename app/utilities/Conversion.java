@@ -104,7 +104,7 @@ public class Conversion {
   // We use degrees modulo 360 to ensure that when we divide by 22.5, we get a valid index.
   // Math round is used for accuracy. Int is used to convert the result of math round (long) to int.
   // We then return the String compass direction using this index.
-  public static String convertDegreesToCompassDirection(int degrees) {
+  public static String convertDegreesToCompassDirection(double degrees) {
     String[] directions = {"North", "North North East", "North East", "East North East", "East", "East South East",
         "South East", "South South East", "South", "South South West", "South West",
         "West South West", "West", "West North West", "North West", "North North West"};

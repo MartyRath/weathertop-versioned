@@ -13,11 +13,11 @@ public class Reading extends Model {
   public int code;
   public double temperature;
   public double windSpeed;
-  public int windDirection;
+  public double windDirection;
   public double pressure;
   public String dateTime;
 
-  public Reading(int code, double temperature, double windSpeed, int windDirection, int pressure) {
+  public Reading(int code, double temperature, double windSpeed, double windDirection, double pressure) {
     this.code = code;
     this.temperature = temperature;
     this.windSpeed = windSpeed;
@@ -52,7 +52,7 @@ public class Reading extends Model {
     return windSpeed;
   }
 
-  public int getWindDirection() {
+  public double getWindDirection() {
     return windDirection;
   }
 
