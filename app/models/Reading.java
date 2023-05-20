@@ -79,5 +79,4 @@ public class Reading extends Model {
     String tempIcon = Conversion.temperatureToIcon(temperature);
     return tempIcon;
   }
-
 }

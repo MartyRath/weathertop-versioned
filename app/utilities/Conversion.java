@@ -113,13 +113,6 @@ public class Conversion {
     return beaufort;
   }
 
-
-  // each separated by 22.5 degrees (360/16)
-  // The index is derived by dividing the degrees by 22.5.
-  // We use degrees modulo 360 to ensure that when we divide by 22.5, we get a valid index.
-  // Math round is used for accuracy. Int is used to convert the result of math round (long) to int.
-  // We then return the String compass direction using this index.
-
   /**
    * Converts degrees to compass directions.
    * @param degrees Compass degrees representing direction
@@ -130,12 +123,17 @@ public class Conversion {
         "South East", "South South East", "South", "South South West", "South West",
         "West South West", "West", "West North West", "North West", "North North West"};
 
-    int index = (int) Math.round(((degrees % 360) / 22.5));
-    if (index <=15){
-    return directions[index];}
-    else return "North";
+    int index = (int) Math.round(((degrees % 360) / 22.5)); //dividing degrees by 22.5 to get the index
+    index = index % 16; //ensures index is between 0 and 15
+    return directions[index];
   }
 
+  /**
+   *
+   * @param temperature
+   * @param windSpeed
+   * @return
+   */
   public static double convertToWindChill(double temperature, double windSpeed) {
     int result = (int) Math.pow(windSpeed, 0.16);
     double windChill = 13.12 + 0.6215 * temperature - 11.37 * result + 0.3965 * temperature * result;

@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.List;
-
 import models.Station;
 import models.Reading;
 import play.Logger;
@@ -32,6 +30,4 @@ public class StationCtrl extends Controller {
     reading.delete();
     render("station.html", station);
   }
-
-
 }
