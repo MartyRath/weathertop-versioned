@@ -10,6 +10,7 @@ public class Conversion {
 
   /**
    * This method refers a weather code to the relevant fontawesome icon class.
+   *
    * @param weatherCode A weather code based on weather conditions
    * @return A fontawesome icon class reference
    */
@@ -30,6 +31,7 @@ public class Conversion {
 
   /**
    * This method reads in a temperature and, based on its value, refers it to the relevant fontawesome icon class.
+   *
    * @param temperature Temperature in Celsius
    * @return A fontawesome icon class reference
    */
@@ -43,6 +45,7 @@ public class Conversion {
 
   /**
    * Converts a weather code and to its relevant String representation.
+   *
    * @param weatherCode The weather code representing the weather condition
    * @return The weather condition String based on the weather code, or null if no matching case.
    */
@@ -70,6 +73,7 @@ public class Conversion {
 
   /**
    * Converts Celsius to Fahrenheit.
+   *
    * @param temperature Temperature in Celsius
    * @return Temperature in Fahrenheit
    */
@@ -80,6 +84,7 @@ public class Conversion {
 
   /**
    * Converts wind speed from kilometers per hour to the Beaufort scale
+   *
    * @param windSpeed Wind Speed in kilometers per hour to be converted
    * @return Beaufort value from input wind speed
    */
@@ -115,6 +120,7 @@ public class Conversion {
 
   /**
    * Converts degrees to compass directions.
+   *
    * @param degrees Compass degrees representing direction
    * @return String representation of compass direction from degrees
    */
@@ -129,7 +135,6 @@ public class Conversion {
   }
 
   /**
-   *
    * @param temperature
    * @param windSpeed
    * @return
@@ -141,75 +146,4 @@ public class Conversion {
     return windChillToOneDecimalPlace;
   }
 
-  public static double getMinValue(List<Reading> readings, String field) {
-    double minValue = Double.MAX_VALUE;
-
-    for (Reading reading : readings) {
-      double value = getValueFromField(reading, field);
-
-      if (value < minValue) {
-        minValue = value;
-      }
-    }
-    return minValue;
-  }
-
-  public static double getMaxValue(List<Reading> readings, String field) {
-    double maxValue = Double.MIN_VALUE;
-
-    for (Reading reading : readings) {
-      double value = getValueFromField(reading, field);
-
-      if (value > maxValue) {
-        maxValue = value;
-      }
-    }
-    return maxValue;
-  }
-
-  //This method takes in a list of type Reading, and a field name from this list of type String.
-  //It returns the value from the input field from the input Reading list.
-  private static double getValueFromField(Reading reading, String field) {
-    double value = 0;
-    switch (field) {
-      case "temperature":
-        value = reading.temperature;
-        break;
-      case "windSpeed":
-        value = reading.windSpeed;
-        break;
-      case "pressure":
-        value = reading.pressure;
-        break;
-    }
-    return value;
-  }
-
-  ////////////TRENDS///////////////
-  //This method returns a rising or falling arrow if the last three readings are rising or falling, respectively.
-  //Its parameters are a list of type Reading, and a field name from this list of type String.
-  public static String getTrends(List<Reading> readings, String field) {
-    //if the list has less than 3 readings, return null.
-    if (readings.size() < 3) {
-      return null;
-    }
-
-    // Assigning the last three readings to variables
-    Reading lastReading = readings.get(readings.size() - 1);
-    Reading secondLastReading = readings.get(readings.size() - 2);
-    Reading thirdLastReading = readings.get(readings.size() - 3);
-
-    //Getting the double value from the appropriate field
-    double last = getValueFromField(lastReading, field);
-    double secondLast = getValueFromField(secondLastReading, field);
-    double thirdLast = getValueFromField(thirdLastReading, field);
-
-    //Comparing the last three input doubles from the appropriate field.
-    if (last > secondLast && secondLast > thirdLast) {
-      return "fa-solid fa-arrow-up";  //rising arrow
-    } else if (last < secondLast && secondLast < thirdLast) {
-      return "fa-solid fa-arrow-down"; //falling arrow
-    }
-    return null;
-  }
 }

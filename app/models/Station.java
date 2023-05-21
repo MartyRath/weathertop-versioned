@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 
 import utilities.Conversion;
+import utilities.Analytics;
 
 
 @Entity
@@ -35,15 +36,15 @@ public class Station extends Model {
   }
 
   public double getMinValue(String field) {
-    return Conversion.getMinValue(readings, field);
+    return Analytics.getMinValue(readings, field);
   }
 
   public double getMaxValue(String field) {
-    return Conversion.getMaxValue(readings, field);
+    return Analytics.getMaxValue(readings, field);
   }
 
   public String getTrends(String field) {
-    return Conversion.getTrends(readings, field);
+    return Analytics.getTrends(readings, field);
   }
 
 }
