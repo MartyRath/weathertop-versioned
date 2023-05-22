@@ -20,7 +20,7 @@ Reading(r3):
   windDirection: 90
   pressure: 1000
 Reading(r4):
-  dateTime: 19/012021 09:31:00
+  dateTime: 19/01/2021 09:31:00
   code: 200
   temperature: 0.5
   windSpeed: 3.5
