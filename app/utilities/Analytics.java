@@ -1,16 +1,18 @@
 package utilities;
 
 import models.Reading;
-
 import java.util.List;
 
+/**
+ * The Analytics class has methods to return trends, minimum and maximum values from input data.
+ */
 public class Analytics {
 
-  public static double getMinValue(List<Reading> readings, String field) {
+  public static double getMinValue(List<Reading> readings, String fieldName) {
     double minValue = Double.MAX_VALUE;
 
     for (Reading reading : readings) {
-      double value = getValueFromField(reading, field);
+      double value = getValueFromField(reading, fieldName);
 
       if (value < minValue) {
         minValue = value;
@@ -19,11 +21,11 @@ public class Analytics {
     return minValue;
   }
 
-  public static double getMaxValue(List<Reading> readings, String field) {
+  public static double getMaxValue(List<Reading> readings, String fieldName) {
     double maxValue = Double.MIN_VALUE;
 
     for (Reading reading : readings) {
-      double value = getValueFromField(reading, field);
+      double value = getValueFromField(reading, fieldName);
 
       if (value > maxValue) {
         maxValue = value;
@@ -34,9 +36,9 @@ public class Analytics {
 
   //This method takes in a list of type Reading, and a field name from this list of type String.
   //It returns the value from the input field from the input Reading list.
-  private static double getValueFromField(Reading reading, String field) {
+  private static double getValueFromField(Reading reading, String fieldName) {
     double value = 0;
-    switch (field) {
+    switch (fieldName) {
       case "temperature":
         value = reading.temperature;
         break;

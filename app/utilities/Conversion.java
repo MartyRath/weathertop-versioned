@@ -1,13 +1,11 @@
 package utilities;
 
-import models.Reading;
-
 import java.util.HashMap;
-import java.util.List;
 
+/**
+ * The Conversions Class contains methods to perform conversions based on input.
+ */
 public class Conversion {
-
-
   /**
    * This method refers a weather code to the relevant fontawesome icon class.
    *
@@ -75,7 +73,7 @@ public class Conversion {
    * Converts Celsius to Fahrenheit.
    *
    * @param temperature Temperature in Celsius
-   * @return Temperature in Fahrenheit
+   * @return Temperature in Fahrenheit, from input Celsius
    */
   public static double convertTemperatureCToF(double temperature) {
     double farenheit = temperature * 9 / 5 + 32;
@@ -135,9 +133,10 @@ public class Conversion {
   }
 
   /**
-   * @param temperature
-   * @param windSpeed
-   * @return
+   * Converts temperature and wind speed to wind chill.
+   * @param temperature Temperature in Celsius
+   * @param windSpeed Wind speed in kilometers per hour
+   * @return Wind chill rounded to one decimal
    */
   public static double convertToWindChill(double temperature, double windSpeed) {
     int result = (int) Math.pow(windSpeed, 0.16);
