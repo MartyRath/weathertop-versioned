@@ -52,9 +52,6 @@ public class Analytics {
     return value;
   }
 
-  ////////////TRENDS///////////////
-  //This method returns a rising or falling arrow if the last three readings are rising or falling, respectively.
-  //Its parameters are a list of type Reading, and a field name from this list of type String.
   public static String getTrends(List<Reading> readings, String field) {
     //if the list has less than 3 readings, return null.
     if (readings.size() < 3) {
