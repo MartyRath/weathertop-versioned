@@ -20,6 +20,16 @@ public class Accounts extends Controller {
     redirect("/");
   }
 
+  public static void updateProfile(String firstname, String lastname, String email, String password) {
+    Member member = Member.findByEmail(email);
+    member.firstname = firstname;
+    member.lastname = lastname;
+    member.password = password;
+    member.save();
+    Logger.info("Updating user " + email);
+    render ("profile.html", member);
+  }
+
   public static void authenticate(String email, String password) {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
 
