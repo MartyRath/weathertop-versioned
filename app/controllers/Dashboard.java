@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import models.Member;
@@ -13,6 +14,7 @@ public class Dashboard extends Controller {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Station> stations = member.stations;
+    stations = listStationsAlphabetically(stations);  //alphabetising stations
     render("dashboard.html", member, stations);
   }
 
@@ -35,9 +37,10 @@ public class Dashboard extends Controller {
     redirect("/dashboard");
   }
 
-  public static void listStationsAlphabetically() {
-    Member member = Accounts.getLoggedInMember();
-    List<Station> stations = member.stations;
+  public static List<Station> listStationsAlphabetically(List<Station> stations) {
+    //.sort will rearrange list based on .comparing key.
+    Collections.sort(stations, Comparator.comparing(Station::getName));
+    return stations;
   }
 }
 
