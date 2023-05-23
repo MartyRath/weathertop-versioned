@@ -28,36 +28,30 @@ public class Reading extends Model {
     this.dateTime = formatter.format(LocalDateTime.now()); //Get Current Date Time & Set formatted String
   }
 
-  public String weatherString() {
+  public String weatherCodeToString() {
     return Conversion.weatherCodeToString(code);
   }
 
-  public double getTemperatureInF() {
-    return Conversion.convertTemperatureCToF(temperature);
+  public String weatherCodeToIcon() {
+    String weatherCodeIcon = Conversion.weatherCodeToIcon(Conversion.weatherCodeToString(code));
+    return weatherCodeIcon;
   }
 
-  public double getBeaufort() {
-    return Conversion.convertWindSpeedToBeaufort(windSpeed);
+  public String temperatureToIcon() {
+    String tempIcon = Conversion.temperatureToIcon(temperature);
+    return tempIcon;
   }
 
   public double getTemperature() {
     return temperature;
   }
 
-  public int getCode() {
-    return code;
+  public double convertTemperatureCToF() {
+    return Conversion.convertTemperatureCToF(temperature);
   }
 
-  public double getWindSpeed() {
-    return windSpeed;
-  }
-
-  public int getWindDirection() {
-    return windDirection;
-  }
-
-  public double getPressure() {
-    return pressure;
+  public double convertWindSpeedKMToBeaufort() {
+    return Conversion.convertWindSpeedKMToBeaufort(windSpeed);
   }
 
   public String getCompassDirection() {
@@ -70,13 +64,8 @@ public class Reading extends Model {
     return windChill;
   }
 
-  public String weatherCodeToIcons() {
-    String weatherCodeIcon = Conversion.weatherCodeToIcon(Conversion.weatherCodeToString(code));
-    return weatherCodeIcon;
+  public double getPressure() {
+    return pressure;
   }
 
-  public String temperatureToIcon() {
-    String tempIcon = Conversion.temperatureToIcon(temperature);
-    return tempIcon;
-  }
 }

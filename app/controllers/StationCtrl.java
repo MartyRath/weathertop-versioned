@@ -18,7 +18,7 @@ public class StationCtrl extends Controller {
     Station station = Station.findById(id);
     station.readings.add(reading);
     station.save();
-    redirect("/stations/" + id); //adding songs are all 0... check lab again
+    redirect("/stations/" + id);
   }
 
   public static void deleteReading(Long id, Long readingid) {

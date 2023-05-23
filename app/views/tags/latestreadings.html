@@ -1,17 +1,17 @@
 #{extends 'main.html' /}
 
-#{list items:_station.latestReadings(), as:'readings'}
+#{list items:_station.latestReadings(), as:'latestReadings'}
 <div class="column is-one-fifth">
     <div class="card has-background-dark">
         <div class="card-content has-text-white">
             <div class="title is-size-5 has-text-white">
                 Weather
                 <span class="icon is-pulled-right">
-                      <i class="${readings.weatherCodeToIcons()} fa-3x mr-5" style="color: #CD303F;"></i>
+                      <i class="${latestReadings.weatherCodeToIcon()} fa-3x mr-5" style="color: #CD303F;"></i>
                     </span>
             </div>
             <br>
-            ${readings.weatherString()} <br> <br> <br>
+            ${latestReadings.weatherCodeToString()} <br> <br> <br>
         </div>
     </div>
 </div>
@@ -21,14 +21,14 @@
             <div class="title is-size-5 has-text-white">
                 Temp
                 <span class="icon is-pulled-right">
-                      <i class="${readings.temperatureToIcon()} fa-3x" style="color: #9DA811;"></i>
+                      <i class="${latestReadings.temperatureToIcon()} fa-3x" style="color: #9DA811;"></i>
                     </span>
             </div>
-            ${readings.temperature} C <br>
+            ${latestReadings.getTemperature()} C <br>
             <span class="icon is-pulled-right mr-3">
                     <i class="${_station.getTrends("temperature")} fa-2x" style="color: #2EF55B;"></i>
                 </span>
-            ${readings.getTemperatureInF()} F <br>
+            ${latestReadings.convertTemperatureCToF()} F <br>
             Max: ${_station.getMaxValue("temperature")} <br>
             Min: ${_station.getMinValue("temperature")} <br>
         </div>
@@ -43,13 +43,13 @@
                       <i class="fa-solid fa-wind fa-3x"></i>
                     </span>
             </div>
-            ${readings.getBeaufort()} bft <br>
+            ${latestReadings.convertWindSpeedKMToBeaufort()} bft <br>
             <span class="icon is-pulled-right">
                     <i class="${_station.getTrends("windSpeed")} fa-2x" style="color: #2EF55B;"></i>
                 </span>
-            ${readings.getCompassDirection()} <br>
+            ${latestReadings.getCompassDirection()} <br>
             Feels like<br>
-            ${readings.getWindChill()} <br>
+            ${latestReadings.getWindChill()} <br>
             Max: ${_station.getMaxValue("windSpeed")} <br>
             Min: ${_station.getMinValue("windSpeed")} <br>
         </div>
@@ -68,7 +68,7 @@
             <span class="icon is-pulled-right">
                     <i class="${_station.getTrends("pressure")} fa-2x" style="color: #2EF55B;"></i>
                 </span>
-            ${readings.pressure} hpa <br>
+            ${latestReadings.getPressure()} hpa <br>
             Max:<br>
             ${_station.getMaxValue("pressure")}
             <br>

@@ -38,7 +38,8 @@ public class Dashboard extends Controller {
   }
 
   public static List<Station> listStationsAlphabetically(List<Station> stations) {
-    //.sort will rearrange list based on .comparing key.
+    Logger.info("Alphabetising stations");
+    //Collections.sort will rearrange list based on Comparator.comparing key.
     Collections.sort(stations, Comparator.comparing(Station::getName));
     return stations;
   }

@@ -86,7 +86,7 @@ public class Conversion {
    * @param windSpeed Wind Speed in kilometers per hour to be converted
    * @return Beaufort value from input wind speed
    */
-  public static double convertWindSpeedToBeaufort(double windSpeed) {
+  public static double convertWindSpeedKMToBeaufort(double windSpeed) {
     double beaufort = 0;
     if (windSpeed <= 1) {
       return 0;

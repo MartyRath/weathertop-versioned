@@ -17,13 +17,14 @@ public class Accounts extends Controller {
     Logger.info("Registering new user " + email);
     Member member = new Member(firstname, lastname, email, password);
     member.save();
-    redirect("/");
+    redirect("/dashboard");
   }
 
   public static void updateProfile(String firstname, String lastname, String email, String password) {
     Member member = Member.findByEmail(email);
     member.firstname = firstname;
     member.lastname = lastname;
+    member.email = email;
     member.password = password;
     member.save();
     Logger.info("Updating user " + email);
