@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import controllers.Accounts;
 import play.db.jpa.Model;
 
 import utilities.Analytics;
@@ -72,6 +73,11 @@ public class Station extends Model {
    */
   public String getTrends(String fieldName) {
     return Analytics.getTrends(readings, fieldName);
+  }
+
+  public static void listStationsAlphabetically() {
+    Member member = Accounts.getLoggedInMember();
+    List<Station> stations = member.stations;
   }
 
 }

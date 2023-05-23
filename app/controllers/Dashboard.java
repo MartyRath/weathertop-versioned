@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.List;
 
 import models.Member;
@@ -32,6 +33,11 @@ public class Dashboard extends Controller {
     member.save();
     station.delete();
     redirect("/dashboard");
+  }
+
+  public static void listStationsAlphabetically() {
+    Member member = Accounts.getLoggedInMember();
+    List<Station> stations = member.stations;
   }
 }
 
