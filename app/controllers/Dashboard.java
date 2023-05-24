@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -13,8 +14,7 @@ public class Dashboard extends Controller {
   public static void index() {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
-    List<Station> stations = member.stations;
-    stations = listStationsAlphabetically(stations);  //alphabetising stations
+    List<Station> stations = listStationsAlphabetically(member.stations); //alphabetising stations
     render("dashboard.html", member, stations);
   }
 
@@ -39,9 +39,10 @@ public class Dashboard extends Controller {
 
   public static List<Station> listStationsAlphabetically(List<Station> stations) {
     Logger.info("Alphabetising stations");
+    List<Station> sortedStations = new ArrayList<>(stations);
     //Collections.sort will rearrange list based on Comparator.comparing key.
-    Collections.sort(stations, Comparator.comparing(Station::getName));
-    return stations;
+    Collections.sort(sortedStations, Comparator.comparing(Station::getName));
+    return sortedStations;
   }
 }
 
