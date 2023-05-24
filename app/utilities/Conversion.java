@@ -13,18 +13,18 @@ public class Conversion {
    * @return A fontawesome icon class reference
    */
   public static String weatherConditionToIcon(String weatherCondition) {
-    HashMap<String, String> weatherCodeToIcon = new HashMap<String, String>();
-    weatherCodeToIcon.put("Clear", "fa-sharp fa-solid fa-sun");
-    weatherCodeToIcon.put("Partial Clouds", "fa-brands fa-soundcloud");
-    weatherCodeToIcon.put("Cloudy", "fa-solid fa-cloud");
-    weatherCodeToIcon.put("Light Showers", "fa-brands fa-drupal");
-    weatherCodeToIcon.put("Heavy Showers", "fa-solid fa-cloud-showers-heavy");
-    weatherCodeToIcon.put("Rain", "fa-solid fa-cloud-rain");
-    weatherCodeToIcon.put("Snow", "fa-solid fa-snowflake");
-    weatherCodeToIcon.put("Thunder", "fa-solid fa-bolt");
+    HashMap<String, String> weatherConditionToIcon = new HashMap<String, String>();
+    weatherConditionToIcon.put("Clear", "fa-sharp fa-solid fa-sun");
+    weatherConditionToIcon.put("Partial Clouds", "fa-brands fa-soundcloud");
+    weatherConditionToIcon.put("Cloudy", "fa-solid fa-cloud");
+    weatherConditionToIcon.put("Light Showers", "fa-brands fa-drupal");
+    weatherConditionToIcon.put("Heavy Showers", "fa-solid fa-cloud-showers-heavy");
+    weatherConditionToIcon.put("Rain", "fa-solid fa-cloud-rain");
+    weatherConditionToIcon.put("Snow", "fa-solid fa-snowflake");
+    weatherConditionToIcon.put("Thunder", "fa-solid fa-bolt");
 
-    String weatherCodeIcon = weatherCodeToIcon.get(weatherCondition);
-    return weatherCodeIcon;
+    String weatherIcon = weatherConditionToIcon.get(weatherCondition);
+    return weatherIcon;
   }
 
   /**

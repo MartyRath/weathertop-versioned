@@ -8,7 +8,7 @@ GET     /                                       Start.index
 GET    /signup                                  Accounts.signup
 GET    /login                                   Accounts.login
 POST   /register                                Accounts.register
-POST   /updateProfile                           Accounts.updateProfile
+POST   /updateProfile/{id}                      Accounts.updateProfile
 POST   /authenticate                            Accounts.authenticate
 GET    /logout                                  Accounts.logout
 

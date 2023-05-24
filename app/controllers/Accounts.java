@@ -20,8 +20,8 @@ public class Accounts extends Controller {
     redirect("/dashboard");
   }
 
-  public static void updateProfile(String firstname, String lastname, String email, String password) {
-    Member member = Member.findByEmail(email);
+  public static void updateProfile(Long id, String firstname, String lastname, String email, String password) {
+    Member member = Member.findById(id);
     member.firstname = firstname;
     member.lastname = lastname;
     member.email = email;
