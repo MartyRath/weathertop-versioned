@@ -7,12 +7,12 @@ import java.util.HashMap;
  */
 public class Conversion {
   /**
-   * This method refers a weather code to the relevant fontawesome icon class.
+   * This method refers a weather condition to the relevant fontawesome icon class.
    *
-   * @param weatherCode A weather code based on weather conditions
+   * @param weatherCondition A weather condition, like clear, snow, etc.
    * @return A fontawesome icon class reference
    */
-  public static String weatherCodeToIcon(String weatherCode) {
+  public static String weatherConditionToIcon(String weatherCondition) {
     HashMap<String, String> weatherCodeToIcon = new HashMap<String, String>();
     weatherCodeToIcon.put("Clear", "fa-sharp fa-solid fa-sun");
     weatherCodeToIcon.put("Partial Clouds", "fa-brands fa-soundcloud");
@@ -23,7 +23,7 @@ public class Conversion {
     weatherCodeToIcon.put("Snow", "fa-solid fa-snowflake");
     weatherCodeToIcon.put("Thunder", "fa-solid fa-bolt");
 
-    String weatherCodeIcon = weatherCodeToIcon.get(weatherCode);
+    String weatherCodeIcon = weatherCodeToIcon.get(weatherCondition);
     return weatherCodeIcon;
   }
 
