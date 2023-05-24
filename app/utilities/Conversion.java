@@ -28,7 +28,8 @@ public class Conversion {
   }
 
   /**
-   * This method reads in a temperature and, based on its value, refers it to the relevant fontawesome icon class.
+   * This method reads in a temperature and, based on its value, refers it to
+   * the relevant fontawesome icon class.
    *
    * @param temperature Temperature in Celsius
    * @return A fontawesome icon class reference
@@ -67,6 +68,26 @@ public class Conversion {
         return "Thunder";
     }
     return null;
+  }
+
+  /**
+   * Converts degrees to compass directions.
+   *
+   * @param degrees Compass degrees representing direction
+   * @return String representation of compass direction from degrees
+   */
+  public static String convertDegreesToCompassDirection(int degrees) {
+    String[] directions = {"North", "North North East", "North East", "East North East", "East",
+        "East South East", "South East", "South South East", "South", "South South West", "South West",
+        "West South West", "West", "West North West", "North West", "North North West"};
+
+    if (degrees < 0) {
+      degrees += 360;
+    }
+
+    int index = (int) Math.round(((degrees % 360) / 22.5)); //dividing degrees by 22.5 to get the index
+    index = index % 16; //ensures index is between 0 and 15
+    return directions[index];
   }
 
   /**
@@ -114,22 +135,6 @@ public class Conversion {
       return 11;
     }
     return beaufort;
-  }
-
-  /**
-   * Converts degrees to compass directions.
-   *
-   * @param degrees Compass degrees representing direction
-   * @return String representation of compass direction from degrees
-   */
-  public static String convertDegreesToCompassDirection(int degrees) {
-    String[] directions = {"North", "North North East", "North East", "East North East", "East", "East South East",
-        "South East", "South South East", "South", "South South West", "South West",
-        "West South West", "West", "West North West", "North West", "North North West"};
-
-    int index = (int) Math.round(((degrees % 360) / 22.5)); //dividing degrees by 22.5 to get the index
-    index = index % 16; //ensures index is between 0 and 15
-    return directions[index];
   }
 
   /**
